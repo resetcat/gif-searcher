@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">gif-searcher</string>
+    <string name="api_button">get api</string>
+</resources>
