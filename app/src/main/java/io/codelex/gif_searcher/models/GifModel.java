@@ -7,16 +7,16 @@ import androidx.annotation.NonNull;
 
 public class GifModel implements Parcelable {
     private String title;
-    private String embed_url;
+    private String id;
 
-    public GifModel(String title, String embed_url) {
+    public GifModel(String title, String id) {
         this.title = title;
-        this.embed_url = embed_url;
+        this.id = id;
     }
 
     protected GifModel(Parcel in) {
         title = in.readString();
-        embed_url = in.readString();
+        id = in.readString();
     }
 
     public static final Creator<GifModel> CREATOR = new Creator<GifModel>() {
@@ -35,8 +35,8 @@ public class GifModel implements Parcelable {
         return title;
     }
 
-    public String getEmbed_url() {
-        return embed_url;
+    public String getId() {
+        return id;
     }
 
     @Override
@@ -47,6 +47,6 @@ public class GifModel implements Parcelable {
     @Override
     public void writeToParcel(@NonNull Parcel dest, int flags) {
         dest.writeString(title);
-        dest.writeString(embed_url);
+        dest.writeString(id);
     }
 }

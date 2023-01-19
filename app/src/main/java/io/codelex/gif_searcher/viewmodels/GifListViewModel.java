@@ -16,11 +16,15 @@ public class GifListViewModel extends ViewModel {
         gifRepository = GifRepository.getInstance();
     }
 
-    public LiveData<List<GifModel>> getGetGifs(){
+    public LiveData<List<GifModel>> getGifs(){
         return gifRepository.getGifs();
     }
 
     public void searchGifApi(String query, int offset){
         gifRepository.searchGifApi(query, offset);
+    }
+
+    public void searchNextPage(){
+        gifRepository.searchNextPage();
     }
 }

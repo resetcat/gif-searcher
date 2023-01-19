@@ -1,5 +1,34 @@
 package io.codelex.gif_searcher.adapters;
 
-public class GifViewHolder {
-    //todo pieliec this.onGifListener = onGiflistener;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import io.codelex.gif_searcher.R;
+
+public class GifViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
+    TextView title;
+    ImageView imageView;
+    OnGifListener onGifListener;
+
+    public GifViewHolder(@NonNull View itemView, OnGifListener onGifListener) {
+        super(itemView);
+
+        this.onGifListener = onGifListener;
+        title = itemView.findViewById(R.id.gif_title);
+        imageView = itemView.findViewById(R.id.gif_img);
+
+        // todo try remove
+        itemView.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        onGifListener.onGifClick(getAdapterPosition());
+    }
+
 }

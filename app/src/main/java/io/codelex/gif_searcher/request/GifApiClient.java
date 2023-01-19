@@ -55,7 +55,6 @@ public class GifApiClient {
         AppExecutors.getInstance().networkIO().schedule(new Runnable() {
             @Override
             public void run() {
-                // cancel retrofit call
                 myHandler.cancel(true);
             }
         }, 3000, TimeUnit.MILLISECONDS);
@@ -63,7 +62,7 @@ public class GifApiClient {
     }
 
     private class RetrieveGifsRunnable implements Runnable {
-        //todo parlikt sava klasee ja viss stradaa
+        //todo put in its own class
         private String query;
         private int offset;
         boolean cancelRequest;
@@ -77,7 +76,7 @@ public class GifApiClient {
         @Override
         public void run() {
             try{
-                Response response = getGifs(query, offset).execute();
+                Response<GifSearchResponse> response = getGifs(query, offset).execute();
                 if (cancelRequest) {
                     return;
                 }
@@ -87,8 +86,10 @@ public class GifApiClient {
                     if(offset == 0){
                         mGifs.postValue(list);
                     } else {
-                        List<GifModel> currentGiffs = mGifs.getValue();
-                        currentGiffs.addAll(list);
+                        List<GifModel> currentGifs = mGifs.getValue() == null ?
+                                new ArrayList<>() : mGifs.getValue();
+                        currentGifs.addAll(list);
+                        mGifs.postValue(currentGifs);
 
                     }
                 } else {
@@ -106,7 +107,7 @@ public class GifApiClient {
         }
 
         private Call<GifSearchResponse> getGifs(String query, int offset) {
-            //todo ieliec norm key ieksa
+            //todo change key access method
             return RequestService.getGifApi().searchGif(Credentials.API_KEY, query, offset);
         }
 
