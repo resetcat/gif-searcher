@@ -10,17 +10,12 @@ import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.List;
-
 import io.codelex.gif_searcher.adapters.GifRecycleView;
 import io.codelex.gif_searcher.adapters.OnGifListener;
-import io.codelex.gif_searcher.models.GifModel;
 import io.codelex.gif_searcher.viewmodels.GifListViewModel;
 
 public class GifSearchActivity extends AppCompatActivity implements OnGifListener {
@@ -36,8 +31,6 @@ public class GifSearchActivity extends AppCompatActivity implements OnGifListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
         setupSearchView();
 
@@ -52,17 +45,10 @@ public class GifSearchActivity extends AppCompatActivity implements OnGifListene
 
 
     private void observeAnyChange() {
-        gifListViewModel.getGifs().observe(this, new Observer<List<GifModel>>() {
-            @Override
-            public void onChanged(List<GifModel> gifModels) {
-                if (gifModels != null) {
-                    for (GifModel gifModel : gifModels) {
-                        Log.v("Tag", "gif id is - " + gifModel.getId());
-
-                        gifRecycleAdapter.setmGifs(gifModels);
-                    }
-                    Log.v("Tag", "size: " + gifModels.size());
-                }
+        gifListViewModel.getGifs().observe(this, gifModels -> {
+            if (gifModels != null) {
+                gifRecycleAdapter.setmGifs(gifModels);
+                Log.v("Tag", "size: " + gifModels.size());
             }
         });
 
@@ -70,7 +56,7 @@ public class GifSearchActivity extends AppCompatActivity implements OnGifListene
 
 
     private void configureRecyclerView() {
-        gifRecycleAdapter = new GifRecycleView(this);
+        GifRecycleView gifRecycleAdapter = new GifRecycleView(this);
         recyclerView.setAdapter(gifRecycleAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -85,15 +71,6 @@ public class GifSearchActivity extends AppCompatActivity implements OnGifListene
 
     }
 
-    @Override
-    public void onGifClick(int position) {
-
-    }
-
-    @Override
-    public void onCategoryClick(String category) {
-
-    }
 
     private void setupSearchView() {
         final SearchView searchView = findViewById(R.id.search_view);

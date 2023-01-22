@@ -12,8 +12,10 @@ android {
         targetSdk 33
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes.each {
+        it.buildConfigField 'String', 'API_KEY', API_KEY
     }
 
     buildTypes {
@@ -46,6 +48,5 @@ dependencies {
 
     implementation 'com.github.bumptech.glide:glide:4.14.2'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.14.2'
-
 
 }

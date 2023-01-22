@@ -13,6 +13,7 @@
 .externalNativeBuild
 .cxx
 local.properties
+gradle.properties
 .idea
 **/*/res/values/secrets.xml
 **/*/utils/Credentials.java

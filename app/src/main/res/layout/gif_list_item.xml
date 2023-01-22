@@ -23,22 +23,25 @@
                 android:layout_width="match_parent"
                 android:layout_height="205dp"
                 android:scaleType="centerCrop"
+                android:background="@color/dark_grey"
                 android:src="@drawable/ic_launcher_background" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/dark_grey"
                 android:orientation="vertical"
                 android:padding="10dp">
 
                 <TextView
                     android:id="@+id/gif_title"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:gravity="center"
                     android:text="Gif name"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_grey"/>
 
             </LinearLayout>
 

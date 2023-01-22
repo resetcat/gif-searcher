@@ -17,7 +17,7 @@ import io.codelex.gif_searcher.models.GifModel;
 public class GifRecycleView  extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private List<GifModel> mGifs;
-    private OnGifListener onGifListener;
+    private final OnGifListener onGifListener;
 
     public GifRecycleView(OnGifListener onGifListener) {
         this.onGifListener = onGifListener;
@@ -47,7 +47,6 @@ public class GifRecycleView  extends RecyclerView.Adapter<RecyclerView.ViewHolde
         }
         return 0;
     }
-// todo watch for change and deletion
     public void setmGifs(List<GifModel> mGifs) {
         this.mGifs = mGifs;
         notifyDataSetChanged();

@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<network-security-config>
-<!--todo removeable-->
-    <domain-config cleartextTrafficPermitted ="true">
-        <domain includeSubdomains="true">api.giphy.com</domain>
-    </domain-config>
-
-</network-security-config>

@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import io.codelex.gif_searcher.R;
 
-public class GifViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+public class GifViewHolder extends RecyclerView.ViewHolder {
 
     TextView title;
     ImageView imageView;
@@ -22,13 +22,6 @@ public class GifViewHolder extends RecyclerView.ViewHolder implements View.OnCli
         title = itemView.findViewById(R.id.gif_title);
         imageView = itemView.findViewById(R.id.gif_img);
 
-        // todo try remove
-        itemView.setOnClickListener(this);
-    }
-
-    @Override
-    public void onClick(View v) {
-        onGifListener.onGifClick(getAdapterPosition());
     }
 
 }
