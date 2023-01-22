@@ -15,10 +15,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import io.codelex.gif_searcher.adapters.GifRecycleView;
-import io.codelex.gif_searcher.adapters.OnGifListener;
 import io.codelex.gif_searcher.viewmodels.GifListViewModel;
 
-public class GifSearchActivity extends AppCompatActivity implements OnGifListener {
+public class GifSearchActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private GifRecycleView gifRecycleAdapter;
@@ -31,7 +30,6 @@ public class GifSearchActivity extends AppCompatActivity implements OnGifListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         setupSearchView();
 
         recyclerView = findViewById(R.id.recyclerView);
@@ -39,8 +37,6 @@ public class GifSearchActivity extends AppCompatActivity implements OnGifListene
 
         configureRecyclerView();
         observeAnyChange();
-
-
     }
 
 
@@ -51,12 +47,11 @@ public class GifSearchActivity extends AppCompatActivity implements OnGifListene
                 Log.v("Tag", "size: " + gifModels.size());
             }
         });
-
     }
 
 
     private void configureRecyclerView() {
-        GifRecycleView gifRecycleAdapter = new GifRecycleView(this);
+        gifRecycleAdapter = new GifRecycleView();
         recyclerView.setAdapter(gifRecycleAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -68,10 +63,7 @@ public class GifSearchActivity extends AppCompatActivity implements OnGifListene
                 }
             }
         });
-
     }
-
-
     private void setupSearchView() {
         final SearchView searchView = findViewById(R.id.search_view);
         searchLengthLimit(searchView);

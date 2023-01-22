@@ -6,11 +6,7 @@ import android.os.Parcelable;
 import androidx.annotation.NonNull;
 
 public class PaginationModel implements Parcelable {
-    private int offset;
-
-    public PaginationModel(int offset) {
-        this.offset = offset;
-    }
+    private final int offset;
 
     protected PaginationModel(Parcel in) {
         offset = in.readInt();
@@ -27,10 +23,6 @@ public class PaginationModel implements Parcelable {
             return new PaginationModel[size];
         }
     };
-
-    public int getOffset() {
-        return offset;
-    }
 
     @Override
     public int describeContents() {

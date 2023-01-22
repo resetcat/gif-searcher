@@ -10,7 +10,7 @@ import io.codelex.gif_searcher.request.GifApiClient;
 public class GifRepository {
 
     private static GifRepository instance;
-    private GifApiClient gifApiClient;
+    private final GifApiClient gifApiClient;
 
     private String mQuery;
     private int mOffset;
@@ -38,7 +38,8 @@ public class GifRepository {
     }
 
     public void searchNextPage(){
-        //todo make 50 dynamic
+        // todo make 50 dynamic
+
         searchGifApi(mQuery,mOffset+50);
     }
 }

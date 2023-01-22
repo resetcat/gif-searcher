@@ -6,13 +6,8 @@ import android.os.Parcelable;
 import androidx.annotation.NonNull;
 
 public class GifModel implements Parcelable {
-    private String title;
-    private String id;
-
-    public GifModel(String title, String id) {
-        this.title = title;
-        this.id = id;
-    }
+    private final String title;
+    private final String id;
 
     protected GifModel(Parcel in) {
         title = in.readString();

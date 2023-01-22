@@ -13,12 +13,11 @@ public class GifViewHolder extends RecyclerView.ViewHolder {
 
     TextView title;
     ImageView imageView;
-    OnGifListener onGifListener;
 
-    public GifViewHolder(@NonNull View itemView, OnGifListener onGifListener) {
+
+    public GifViewHolder(@NonNull View itemView) {
         super(itemView);
 
-        this.onGifListener = onGifListener;
         title = itemView.findViewById(R.id.gif_title);
         imageView = itemView.findViewById(R.id.gif_img);
 

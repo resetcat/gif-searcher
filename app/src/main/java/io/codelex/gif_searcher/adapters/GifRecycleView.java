@@ -17,18 +17,14 @@ import io.codelex.gif_searcher.models.GifModel;
 public class GifRecycleView  extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private List<GifModel> mGifs;
-    private final OnGifListener onGifListener;
 
-    public GifRecycleView(OnGifListener onGifListener) {
-        this.onGifListener = onGifListener;
-    }
 
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.gif_list_item,
                                                                      parent, false);
-        return new GifViewHolder(view, onGifListener);
+        return new GifViewHolder(view);
     }
 
     @Override
