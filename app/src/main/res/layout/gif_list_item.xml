@@ -10,7 +10,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view"
         android:layout_width="250dp"
-        android:layout_height="241dp"
+        android:layout_height="wrap_content"
         app:cardElevation="10dp">
 
         <LinearLayout
@@ -22,28 +22,20 @@
                 android:id="@+id/gif_img"
                 android:layout_width="match_parent"
                 android:layout_height="205dp"
-                android:scaleType="centerCrop"
                 android:background="@color/dark_grey"
+                android:scaleType="centerCrop"
                 android:src="@drawable/ic_launcher_background" />
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/gif_title"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="20dp"
                 android:background="@color/dark_grey"
-                android:orientation="vertical"
-                android:padding="10dp">
-
-                <TextView
-                    android:id="@+id/gif_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="Gif name"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/text_grey"/>
-
-            </LinearLayout>
+                android:gravity="center"
+                android:text="Gif name"
+                android:textColor="@color/text_grey"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
 
         </LinearLayout>

@@ -11,7 +11,7 @@ import android.widget.SearchView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import io.codelex.gif_searcher.adapters.GifRecycleView;
@@ -53,7 +53,7 @@ public class GifSearchActivity extends AppCompatActivity {
     private void configureRecyclerView() {
         gifRecycleAdapter = new GifRecycleView();
         recyclerView.setAdapter(gifRecycleAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override

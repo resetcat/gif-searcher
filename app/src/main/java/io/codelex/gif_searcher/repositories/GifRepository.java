@@ -3,6 +3,7 @@ package io.codelex.gif_searcher.repositories;
 import androidx.lifecycle.LiveData;
 
 import java.util.List;
+import java.util.Objects;
 
 import io.codelex.gif_searcher.models.GifModel;
 import io.codelex.gif_searcher.request.GifApiClient;
@@ -38,8 +39,11 @@ public class GifRepository {
     }
 
     public void searchNextPage(){
-        // todo make 50 dynamic
-
-        searchGifApi(mQuery,mOffset+50);
+        int offset = 0;
+        int pageSize = Objects.requireNonNull(instance.getGifs().getValue()).size();
+        if(pageSize>=50){
+            offset = 50;
+        }
+        searchGifApi(mQuery,mOffset+offset);
     }
 }

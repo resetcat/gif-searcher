@@ -10,7 +10,7 @@ import io.codelex.gif_searcher.repositories.GifRepository;
 
 public class GifListViewModel extends ViewModel {
 
-    private GifRepository gifRepository;
+    private final GifRepository gifRepository;
 
     public GifListViewModel() {
         gifRepository = GifRepository.getInstance();

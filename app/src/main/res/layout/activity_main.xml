@@ -9,25 +9,6 @@
     >
 
 
-    <!--        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"-->
-<!--        app:spanCount="2"-->
-
-<!--    <androidx.appcompat.widget.Toolbar-->
-<!--        android:id="@+id/toolbar"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="100dp"-->
-<!--        android:layout_marginTop="4dp"-->
-<!--        android:theme="@style/ThemeOverlay.AppCompat.Light"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="1.0"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_scrollFlags="scroll|enterAlways"-->
-<!--        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">-->
-
-
-<!--    </androidx.appcompat.widget.Toolbar>-->
-
     <SearchView
         android:id="@+id/search_view"
         android:layout_width="match_parent"
