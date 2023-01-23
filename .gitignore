@@ -17,3 +17,5 @@ gradle.properties
 .idea
 **/*/res/values/secrets.xml
 **/*/utils/Credentials.java
+app/src/androidTest
+app/src/test
