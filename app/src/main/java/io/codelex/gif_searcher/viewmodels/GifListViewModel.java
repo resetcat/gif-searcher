@@ -9,7 +9,6 @@ import io.codelex.gif_searcher.models.GifModel;
 import io.codelex.gif_searcher.repositories.GifRepository;
 
 public class GifListViewModel extends ViewModel {
-
     private final GifRepository gifRepository;
 
     public GifListViewModel() {

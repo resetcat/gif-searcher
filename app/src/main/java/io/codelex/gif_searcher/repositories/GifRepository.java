@@ -9,7 +9,6 @@ import io.codelex.gif_searcher.models.GifModel;
 import io.codelex.gif_searcher.request.GifApiClient;
 
 public class GifRepository {
-
     private static GifRepository instance;
     private final GifApiClient gifApiClient;
 

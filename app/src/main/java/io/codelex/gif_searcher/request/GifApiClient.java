@@ -15,9 +15,6 @@ public class GifApiClient {
     private final MutableLiveData<List<GifModel>> mGifs;
     private static GifApiClient instance;
 
-    private RetrieveGifsRunnable retrieveGifsRunnable;
-
-
 
     public static GifApiClient getInstance() {
         if (instance == null) {
@@ -36,11 +33,7 @@ public class GifApiClient {
 
     public void searchGifsApi(String query,int offset) {
 
-        if(retrieveGifsRunnable != null){
-            retrieveGifsRunnable = null;
-        }
-
-        retrieveGifsRunnable = new RetrieveGifsRunnable(query, offset, mGifs);
+        RetrieveGifsRunnable retrieveGifsRunnable = new RetrieveGifsRunnable(query, offset, mGifs);
 
         final Future myHandler = AppExecutors.getInstance().networkIO().submit(retrieveGifsRunnable);
 

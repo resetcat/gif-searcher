@@ -5,7 +5,6 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RequestService {
-
     public static final String URL = "https://api.giphy.com/v1/gifs/";
 
     private static final Retrofit.Builder retrofitBuilder = new Retrofit.Builder()

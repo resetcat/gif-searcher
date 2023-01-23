@@ -10,10 +10,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import io.codelex.gif_searcher.R;
 
 public class GifViewHolder extends RecyclerView.ViewHolder {
-
     TextView title;
     ImageView imageView;
-
 
     public GifViewHolder(@NonNull View itemView) {
         super(itemView);

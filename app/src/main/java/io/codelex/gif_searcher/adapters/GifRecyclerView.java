@@ -14,10 +14,8 @@ import java.util.List;
 import io.codelex.gif_searcher.R;
 import io.codelex.gif_searcher.models.GifModel;
 
-public class GifRecycleView  extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-
+public class GifRecyclerView extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private List<GifModel> mGifs;
-
 
     @NonNull
     @Override

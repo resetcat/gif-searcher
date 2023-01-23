@@ -18,22 +18,17 @@ public class RetrieveGifsRunnable implements Runnable {
     private final String query;
     private final int offset;
     private final MutableLiveData<List<GifModel>> mGifs;
-    boolean cancelRequest;
 
     public RetrieveGifsRunnable(String query, int offset, MutableLiveData<List<GifModel>> mGifs) {
         this.query = query;
         this.offset = offset;
         this.mGifs = mGifs;
-        this.cancelRequest = false;
     }
 
     @Override
     public void run() {
         try{
             Response<GifSearchResponse> response = getGifs(query, offset).execute();
-            if (cancelRequest) {
-                return;
-            }
             if (response.code() == 200){
                 assert response.body() != null;
                 List<GifModel> list =
@@ -55,8 +50,8 @@ public class RetrieveGifsRunnable implements Runnable {
             }
 
         } catch (IOException e) {
-            e.printStackTrace();
             mGifs.postValue(null);
+            Log.v("IO", e.toString());
         }
     }
 

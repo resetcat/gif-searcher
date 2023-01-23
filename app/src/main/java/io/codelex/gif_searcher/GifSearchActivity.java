@@ -2,9 +2,7 @@ package io.codelex.gif_searcher;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.os.Handler;
 import android.text.InputFilter;
-import android.util.Log;
 import android.widget.EditText;
 import android.widget.SearchView;
 
@@ -14,16 +12,17 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import io.codelex.gif_searcher.adapters.GifRecycleView;
+import com.google.firebase.crashlytics.buildtools.reloc.com.google.common.util.concurrent.RateLimiter;
+
+import io.codelex.gif_searcher.adapters.GifRecyclerView;
 import io.codelex.gif_searcher.viewmodels.GifListViewModel;
 
 public class GifSearchActivity extends AppCompatActivity {
-
     private RecyclerView recyclerView;
-    private GifRecycleView gifRecycleAdapter;
+    private GifRecyclerView gifRecyclerAdapter;
     private GifListViewModel gifListViewModel;
-    private final Handler mHandler = new Handler();
-    private Runnable mRunnable;
+    private final RateLimiter rateLimiter = RateLimiter.create(0.5);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,16 +42,15 @@ public class GifSearchActivity extends AppCompatActivity {
     private void observeAnyChange() {
         gifListViewModel.getGifs().observe(this, gifModels -> {
             if (gifModels != null) {
-                gifRecycleAdapter.setmGifs(gifModels);
-                Log.v("Tag", "size: " + gifModels.size());
+                gifRecyclerAdapter.setmGifs(gifModels);
             }
         });
     }
 
 
     private void configureRecyclerView() {
-        gifRecycleAdapter = new GifRecycleView();
-        recyclerView.setAdapter(gifRecycleAdapter);
+        gifRecyclerAdapter = new GifRecyclerView();
+        recyclerView.setAdapter(gifRecyclerAdapter);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -73,12 +71,11 @@ public class GifSearchActivity extends AppCompatActivity {
             public boolean onQueryTextSubmit(String query) {
                 return false;
             }
-
             @Override
             public boolean onQueryTextChange(String newText) {
-                mHandler.removeCallbacks(mRunnable);
-                mRunnable = () -> gifListViewModel.searchGifApi(newText, 0);
-                mHandler.postDelayed(mRunnable, 300);
+                if(rateLimiter.tryAcquire()){
+                    gifListViewModel.searchGifApi(newText, 0);
+                }
                 return false;
             }
         });

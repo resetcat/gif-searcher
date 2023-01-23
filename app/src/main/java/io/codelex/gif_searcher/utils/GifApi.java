@@ -6,7 +6,6 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 public interface GifApi {
-
     @GET("search")
     Call<GifSearchResponse> searchGif(
             @Query("api_key") String key,

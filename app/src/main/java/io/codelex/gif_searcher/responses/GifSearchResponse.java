@@ -12,7 +12,6 @@ public class GifSearchResponse {
     @SerializedName("data")
     @Expose
     private List<GifModel> gifs;
-
     @SerializedName("pagination")
     @Expose
     private PaginationModel paginationModel;
