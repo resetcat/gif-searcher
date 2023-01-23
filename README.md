@@ -7,7 +7,7 @@
 3. if available it will load more images at the end of the scroll list.
 ---
 ### Requirements:
-You need to have android studio to launch this app.
+You need to have `android studio` to launch this app.
 
 ---
 
