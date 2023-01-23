@@ -13,7 +13,8 @@ You need to have `android studio` to launch this app.
 
 ### Configuration
 1. Copy this project: `git clone git@github.com:resetcat/gif-searcher.git`<br />
-2. Add your Giphy key to `gradle.properties API_KEY="your key"`  file or run a command from root `echo API_KEY={{your
+2. You will need `api key` to use this app you can get in by registering in https://developers.giphy.com/
+3. Add your Giphy key to `gradle.properties API_KEY="your key"`  file or run a command from root `echo API_KEY={{your
    key}} >>
    gradle.
    properties`
