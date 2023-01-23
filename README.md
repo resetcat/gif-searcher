@@ -1,4 +1,5 @@
 # gif-searcher
+![alt text](https://s3.gifyu.com/images/ezgif-2-ff7c50b870.gif)
 ---
 ### Project Description
 1. simple android app that searches GIF images from Giphy API
@@ -6,7 +7,8 @@
 3. if available it will load more images at the end of the scroll list.
 ---
 ### Requirements:
-You need to have working android emulator or android phone to launch this app.
+You need to have android studio to launch this app.
+Or instal apk file
 
 ---
 
