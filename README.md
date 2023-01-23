@@ -8,7 +8,6 @@
 ---
 ### Requirements:
 You need to have android studio to launch this app.
-Or instal apk file
 
 ---
 
