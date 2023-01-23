@@ -2,6 +2,7 @@ package io.codelex.gif_searcher;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.InputFilter;
 import android.widget.EditText;
 import android.widget.SearchView;
@@ -12,8 +13,6 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.firebase.crashlytics.buildtools.reloc.com.google.common.util.concurrent.RateLimiter;
-
 import io.codelex.gif_searcher.adapters.GifRecyclerView;
 import io.codelex.gif_searcher.viewmodels.GifListViewModel;
 
@@ -21,7 +20,8 @@ public class GifSearchActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private GifRecyclerView gifRecyclerAdapter;
     private GifListViewModel gifListViewModel;
-    private final RateLimiter rateLimiter = RateLimiter.create(0.5);
+    private final Handler handler = new Handler();
+    private Runnable runnable;
 
 
     @Override
@@ -73,16 +73,18 @@ public class GifSearchActivity extends AppCompatActivity {
             }
             @Override
             public boolean onQueryTextChange(String newText) {
-                if(rateLimiter.tryAcquire()){
-                    gifListViewModel.searchGifApi(newText, 0);
-                }
+                handler.removeCallbacks(runnable);
+                runnable = () -> gifListViewModel.searchGifApi(newText, 0);
+                handler.postDelayed(runnable, 500);
+
+
                 return false;
             }
         });
     }
     private void searchLengthLimit(SearchView searchView){
         int limit = 50;
-        @SuppressLint("DiscouragedApi") EditText et = (EditText) searchView.findViewById(
+        @SuppressLint("DiscouragedApi") EditText et = searchView.findViewById(
                 searchView.getContext()
                           .getResources()
                           .getIdentifier("android:id/search_src_text", null, null));
